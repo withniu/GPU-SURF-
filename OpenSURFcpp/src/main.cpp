@@ -24,7 +24,7 @@
 //  - 3 to match find an object in an image (work in progress)
 //  - 4 to display moving features (work in progress)
 //  - 5 to show matches between static images
-#define PROCEDURE 2
+#define PROCEDURE 1
 
 //-------------------------------------------------------
 
