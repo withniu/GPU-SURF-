@@ -228,23 +228,23 @@ int mainMotionPoints(void)
 
 int mainStaticMatch()
 {
-#ifdef TIMING
+
   time_t start,end1,end2,end3,end4,end5;
   start = clock();
-#endif
+
   IplImage *img1, *img2;
   img1 = cvLoadImage("imgs/img1.jpg");
   img2 = cvLoadImage("imgs/img2.jpg");
-#ifdef TIMING  
+ 
   end1 = clock();
-#endif 
+
   IpVec ipts1, ipts2;
-  surfDetDes(img1,ipts1,false,4,4,2,0.0001f);
+  surfDetDessurfDetDes(img1,ipts1,false,4,4,2,0.0001f);
   surfDetDes(img2,ipts2,false,4,4,2,0.0001f);
 
-#ifdef TIMING
+
   end2 = clock();
-#endif
+
   
   IpPairVec matches;
   getMatches(ipts1,ipts2,matches);
