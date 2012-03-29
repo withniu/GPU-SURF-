@@ -315,8 +315,8 @@ int mainStaticMatch()
 */
 	end4 = clock();
 
-    cvSaveImage("result1.jpg",img1);
-	cvSaveImage("result2.jpg",img2);
+    cvSaveImage("result1_gpu.jpg",img1);
+	cvSaveImage("result2_gpu.jpg",img2);
 	
 	end5 = clock();
 	double dif1 = (double)(end1 - start) / CLOCKS_PER_SEC;
