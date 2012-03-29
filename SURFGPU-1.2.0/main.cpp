@@ -51,8 +51,7 @@ int mainKmeans(void);
 
 int main(void) 
 {
-	time_t start,end;
-	start = clock();
+	
   if (PROCEDURE == 1)  
 	mainImage();
   if (PROCEDURE == 2)
@@ -66,9 +65,7 @@ int main(void)
   if (PROCEDURE == 6)
 	mainKmeans();
 	
-	end = clock();
-	double dif = (double)(end - start) / CLOCKS_PER_SEC;
-	std::cout << "Time:" << dif << std::endl;
+
 	return 0;
 }
 
@@ -279,6 +276,10 @@ int mainStaticMatch()
   img1 = cvLoadImage("Images/img1.jpg");
   img2 = cvLoadImage("Images/img2.jpg");
 
+  time_t start,end;
+	start = clock();
+  
+  
   IpVec ipts1, ipts2;
   surfDetDes(img1,ipts1,false,4,4,2,0.0001f);
   surfDetDes(img2,ipts2,false,4,4,2,0.0001f);
@@ -304,6 +305,10 @@ int mainStaticMatch()
   cvShowImage("2", img2);
   cvWaitKey(0);
 */
+	end = clock();
+	double dif = (double)(end - start) / CLOCKS_PER_SEC;
+	std::cout << "Time:" << dif << std::endl;
+
     cvSaveImage("result1.jpg",img1);
 	cvSaveImage("result2.jpg",img2);
 	
