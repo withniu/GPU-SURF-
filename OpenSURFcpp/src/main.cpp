@@ -235,7 +235,9 @@ int mainStaticMatch()
   IplImage *img1, *img2;
   img1 = cvLoadImage("imgs/img1.jpg");
   img2 = cvLoadImage("imgs/img2.jpg");
+  
   end1 = clock();
+  
   IpVec ipts1, ipts2;
   surfDetDes(img1,ipts1,false,4,4,2,0.0001f);
   surfDetDes(img2,ipts2,false,4,4,2,0.0001f);

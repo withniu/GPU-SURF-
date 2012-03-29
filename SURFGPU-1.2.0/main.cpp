@@ -282,8 +282,6 @@ int mainStaticMatch()
 	
   end1 = clock();
 
-  
-  
   IpVec ipts1, ipts2;
   surfDetDes(img1,ipts1,false,4,4,2,0.0001f);
   surfDetDes(img2,ipts2,false,4,4,2,0.0001f);
@@ -331,7 +329,6 @@ int mainStaticMatch()
  	std::cout << "Time(match):" << dif3 << std::endl;
  	std::cout << "Time(plot):" << dif4 << std::endl;
  	std::cout << "Time(save):" << dif5 << std::endl;
-   
   return 0;
 }
 
