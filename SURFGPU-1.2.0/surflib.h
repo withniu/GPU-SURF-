@@ -72,7 +72,7 @@ end5 = clock();
 	double dif5 = (double)(end5 - end4) / CLOCKS_PER_SEC;
 	std::cout.setf(std::ios::fixed,std::ios::floatfield);
 	std::cout.precision(5);
-	std::cout << "\tTime(cudaImage):" << dif1 << std::endl;
+	std::cout << "\tTime(Integral):" << dif1 << std::endl;
 	std::cout << "\tTime(FastHessian):" << dif2 << std::endl;
  	std::cout << "\tTime(getIpoints):" << dif3 << std::endl;
  	std::cout << "\tTime(descriptor):" << dif4 << std::endl;

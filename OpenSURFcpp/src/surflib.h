@@ -31,23 +31,38 @@ inline void surfDetDes(IplImage *img,  /* image to find Ipoints in */
                        int init_sample = INIT_SAMPLE, /* initial sampling step */
                        float thres = THRES /* blob response threshold */)
 {
+  time_t start,end1,end2,end3,end4,end5;
+  start = clock();
+  
   // Create integral-image representation of the image
   IplImage *int_img = Integral(img);
-  
+end1 = clock();  
   // Create Fast Hessian Object
   FastHessian fh(int_img, ipts, octaves, intervals, init_sample, thres);
- 
+end2 = clock(); 
   // Extract interest points and store in vector ipts
   fh.getIpoints();
-  
+end3 = clock();  
   // Create Surf Descriptor Object
   Surf des(int_img, ipts);
-
   // Extract the descriptors for the ipts
   des.getDescriptors(upright);
-
+end4 = clock();
   // Deallocate the integral image
   cvReleaseImage(&int_img);
+end5 = clock();
+	double dif1 = (double)(end1 - start) / CLOCKS_PER_SEC;
+	double dif2 = (double)(end2 - end1) / CLOCKS_PER_SEC;
+	double dif3 = (double)(end3 - end2) / CLOCKS_PER_SEC;
+	double dif4 = (double)(end4 - end3) / CLOCKS_PER_SEC;
+	double dif5 = (double)(end5 - end4) / CLOCKS_PER_SEC;
+	std::cout.setf(std::ios::fixed,std::ios::floatfield);
+	std::cout.precision(5);
+	std::cout << "\tTime(Integral):" << dif1 << std::endl;
+	std::cout << "\tTime(FastHessian):" << dif2 << std::endl;
+ 	std::cout << "\tTime(getIpoints):" << dif3 << std::endl;
+ 	std::cout << "\tTime(descriptor):" << dif4 << std::endl;
+ 	std::cout << "\tTime(cvReleaseImage):" << dif5 << std::endl;
 }
 
 
