@@ -65,8 +65,9 @@ int main(void)
 	mainStaticMatch();
   if (PROCEDURE == 6)
 	mainKmeans();
+	
 	time(&end);
-	double dif = difftime(end,start);
+	double dif = (end - start) / CLOCKS_PER_SEC;
 	std::cout << "Time:" << dif << std::endl;
 	return 0;
 }
