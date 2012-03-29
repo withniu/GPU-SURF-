@@ -36,7 +36,7 @@
 //  - 3 to match find an object in an image (work in progress)
 //  - 4 to display moving features (work in progress)
 //  - 5 to show matches between static images
-#define PROCEDURE 1
+#define PROCEDURE 5
 
 //-------------------------------------------------------
 
@@ -284,13 +284,16 @@ int mainStaticMatch()
   }
 
   std::cout << "Matches: " << matches.size() << std::endl;
-
+/*
   cvNamedWindow("1", CV_WINDOW_AUTOSIZE );
   cvNamedWindow("2", CV_WINDOW_AUTOSIZE );
   cvShowImage("1", img1);
   cvShowImage("2", img2);
   cvWaitKey(0);
-
+*/
+    cvSaveImage("result1.jpg",img1);
+	cvSaveImage("result2.jpg",img2);
+	
   return 0;
 }
 
