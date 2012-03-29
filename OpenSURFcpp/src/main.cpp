@@ -239,7 +239,7 @@ int mainStaticMatch()
   end1 = clock();
 
   IpVec ipts1, ipts2;
-  surfDetDessurfDetDes(img1,ipts1,false,4,4,2,0.0001f);
+  surfDetDes(img1,ipts1,false,4,4,2,0.0001f);
   surfDetDes(img2,ipts2,false,4,4,2,0.0001f);
 
 
