@@ -51,12 +51,24 @@ int mainKmeans(void);
 
 int main(void) 
 {
-  if (PROCEDURE == 1) return mainImage();
-  if (PROCEDURE == 2) return mainVideo();
-  if (PROCEDURE == 3) return mainMatch();
-  if (PROCEDURE == 4) return mainMotionPoints();
-  if (PROCEDURE == 5) return mainStaticMatch();
-  if (PROCEDURE == 6) return mainKmeans();
+	time_t start,end;
+	time(&start);
+  if (PROCEDURE == 1)  
+	mainImage();
+  if (PROCEDURE == 2)
+	mainVideo();
+  if (PROCEDURE == 3)
+	mainMatch();
+  if (PROCEDURE == 4)
+	mainMotionPoints();
+  if (PROCEDURE == 5)
+	mainStaticMatch();
+  if (PROCEDURE == 6)
+	mainKmeans();
+	time(&end);
+	double dif = difftime(end,start);
+	std::cout << "Time:" <<dif << std:endl;
+	return 0;
 }
 
 
