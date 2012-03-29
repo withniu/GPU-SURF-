@@ -272,21 +272,29 @@ int mainMotionPoints(void)
 
 int mainStaticMatch()
 {
+
+  time_t start,end1,end2,end3,end4,end5;
+  start = clock();
+
   IplImage *img1, *img2;
   img1 = cvLoadImage("Images/img1.jpg");
   img2 = cvLoadImage("Images/img2.jpg");
+	
+  end1 = clock();
 
-  time_t start,end;
-	start = clock();
   
   
   IpVec ipts1, ipts2;
   surfDetDes(img1,ipts1,false,4,4,2,0.0001f);
   surfDetDes(img2,ipts2,false,4,4,2,0.0001f);
 
+  end2 = clock();
+  
   IpPairVec matches;
   getMatches(ipts1,ipts2,matches);
 
+  end3 = clock();
+  
   for (unsigned int i = 0; i < matches.size(); ++i)
   {
     drawPoint(img1,matches[i].first);
@@ -305,13 +313,23 @@ int mainStaticMatch()
   cvShowImage("2", img2);
   cvWaitKey(0);
 */
-	end = clock();
-	double dif = (double)(end - start) / CLOCKS_PER_SEC;
-	std::cout << "Time:" << dif << std::endl;
+	end4 = clock();
 
     cvSaveImage("result1.jpg",img1);
 	cvSaveImage("result2.jpg",img2);
 	
+	end5 = clock();
+	double dif1 = (double)(end1 - start) / CLOCKS_PER_SEC;
+	double dif2 = (double)(end2 - end1) / CLOCKS_PER_SEC;
+	double dif3 = (double)(end3 - end2) / CLOCKS_PER_SEC;
+	double dif4 = (double)(end4 - end3) / CLOCKS_PER_SEC;
+	double dif5 = (double)(end5 - end4) / CLOCKS_PER_SEC;
+	std::cout << "Time(load):" << dif1 << std::endl;
+	std::cout << "Time(descriptor):" << dif2 << std::endl;
+ 	std::cout << "Time(match):" << dif3 << std::endl;
+ 	std::cout << "Time(plot):" << dif4 << std::endl;
+ 	std::cout << "Time(save):" << dif5 << std::endl;
+   
   return 0;
 }
 
