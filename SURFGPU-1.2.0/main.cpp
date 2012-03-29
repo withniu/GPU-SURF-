@@ -67,7 +67,7 @@ int main(void)
 	mainKmeans();
 	time(&end);
 	double dif = difftime(end,start);
-	std::cout << "Time:" <<dif << std:endl;
+	std::cout << "Time:" << dif << std::endl;
 	return 0;
 }
 
