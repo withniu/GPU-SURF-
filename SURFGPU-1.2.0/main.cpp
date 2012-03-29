@@ -52,7 +52,7 @@ int mainKmeans(void);
 int main(void) 
 {
 	time_t start,end;
-	time(&start);
+	start = clock();
   if (PROCEDURE == 1)  
 	mainImage();
   if (PROCEDURE == 2)
@@ -66,7 +66,7 @@ int main(void)
   if (PROCEDURE == 6)
 	mainKmeans();
 	
-	time(&end);
+	end = clock();
 	double dif = (double)(end - start) / CLOCKS_PER_SEC;
 	std::cout << "Time:" << dif << std::endl;
 	return 0;
