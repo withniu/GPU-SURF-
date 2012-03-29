@@ -67,7 +67,7 @@ int main(void)
 	mainKmeans();
 	
 	time(&end);
-	double dif = (end - start) / CLOCKS_PER_SEC;
+	double dif = (double)(end - start) / CLOCKS_PER_SEC;
 	std::cout << "Time:" << dif << std::endl;
 	return 0;
 }
