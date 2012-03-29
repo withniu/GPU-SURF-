@@ -81,7 +81,8 @@ int mainImage(void)
   drawIpoints(img, ipts);
 
   // Display the result
-  showImage(img);
+  //showImage(img);
+  cvSaveImage("result.jpg",img);
 
   return 0;
 }
