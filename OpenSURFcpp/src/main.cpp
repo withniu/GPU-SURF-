@@ -257,7 +257,7 @@ int mainStaticMatch()
     cvLine(img2,cvPoint(matches[i].first.x-w,matches[i].first.y),cvPoint(matches[i].second.x,matches[i].second.y), cvScalar(255,255,255),1);
   }
 
-  std::cout<< "Matches: " << matches.size();
+  std::cout<< "Matches: " << matches.size()<<std::endl;
 /*
   cvNamedWindow("1", CV_WINDOW_AUTOSIZE );
   cvNamedWindow("2", CV_WINDOW_AUTOSIZE );
