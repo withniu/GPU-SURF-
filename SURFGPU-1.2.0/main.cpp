@@ -321,9 +321,9 @@ int mainStaticMatch()
 //	cvZero( img );	
 	cvSetImageROI( img, cvRect( 0, 0, img1->width, img1->height ) ); 
     cvCopy(img1, img);
-//    cvResetImageROI(img); 
     cvSetImageROI( img, cvRect(img1->width,0, img2->width, img2->height) ); 
     cvCopy(img2, img); 
+	cvResetImageROI(img); 	
 	cvSaveImage("result_gpu.jpg",img);
 	
 	end5 = clock();
