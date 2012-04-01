@@ -233,8 +233,8 @@ int mainStaticMatch()
   start = clock();
 
   IplImage *img1, *img2;
-  img1 = cvLoadImage("imgs/img1.jpg");
-  img2 = cvLoadImage("imgs/img2.jpg");
+  img1 = cvLoadImage("../../data/1.jpg");
+  img2 = cvLoadImage("../../data/2.jpg");
  
   end1 = clock();
 
