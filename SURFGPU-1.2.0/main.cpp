@@ -313,12 +313,12 @@ int mainStaticMatch()
 */
 	end4 = clock();
 
-    cvSaveImage("result1_gpu.jpg",img1);
-	cvSaveImage("result2_gpu.jpg",img2);
+//  cvSaveImage("result_gpu1.jpg",img1);
+//	cvSaveImage("result_gpu2.jpg",img2);
 
+	// Stitch two images
 	IplImage *img = cvCreateImage(cvSize(img1->width + img2->width,
 										 img1->height),img1->depth,img1->nChannels); 
-//	cvZero( img );	
 	cvSetImageROI( img, cvRect( 0, 0, img1->width, img1->height ) ); 
     cvCopy(img1, img);
     cvSetImageROI( img, cvRect(img1->width,0, img2->width, img2->height) ); 
