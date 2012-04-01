@@ -242,7 +242,7 @@ int mainStaticMatch()
   surfDetDes(img1,ipts1,false,4,4,2,0.001f);
   surfDetDes(img2,ipts2,false,4,4,2,0.001f);
 
-/
+
 
   
   end2 = clock();
