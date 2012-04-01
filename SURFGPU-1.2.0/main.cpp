@@ -318,11 +318,11 @@ int mainStaticMatch()
 
 	IplImage *img = cvCreateImage(cvSize(img1->width + img2->width,
 										 img1->height),img1->depth,img1->nChannels); 
-	cvZero( img );	
+//	cvZero( img );	
 	cvSetImageROI( img, cvRect( 0, 0, img1->width, img1->height ) ); 
     cvCopy(img1, img);
-    cvResetImageROI(img); 
-    cvSetImageROI( img, cvRect(img1->width,0, img2->width, img1->height) ); 
+//    cvResetImageROI(img); 
+    cvSetImageROI( img, cvRect(img1->width,0, img2->width, img2->height) ); 
     cvCopy(img2, img); 
 	cvSaveImage("result_gpu.jpg",img);
 	
