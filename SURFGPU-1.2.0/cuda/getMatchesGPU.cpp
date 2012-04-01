@@ -58,7 +58,7 @@ getMatches(IpVec &ipts1, IpVec &ipts2, IpPairVec &matches)
 	CUDA_SAFE_CALL( cudaMemcpy(d_lin_descs1, lin_descs1, ipts1.size() * 64 * sizeof(float), cudaMemcpyHostToDevice) );
 	CUDA_SAFE_CALL( cudaMemcpy(d_lin_descs2, lin_descs2, ipts2.size() * 64 * sizeof(float), cudaMemcpyHostToDevice) );
 
-	prepare_matchSURFKeypointsGPU(0.75f);
+	prepare_matchSURFKeypointsGPU(0.77f);
 	matchSURFKeypointsGPU(d_indices, d_dists,
 		d_lin_descs1, ipts1.size(), 64 * sizeof(float),
 		d_lin_descs2, ipts2.size(), 64 * sizeof(float),
