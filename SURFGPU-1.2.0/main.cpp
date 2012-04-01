@@ -322,6 +322,7 @@ int mainStaticMatch()
 	double dif3 = (double)(end3 - end2) / CLOCKS_PER_SEC;
 	double dif4 = (double)(end4 - end3) / CLOCKS_PER_SEC;
 	double dif5 = (double)(end5 - end4) / CLOCKS_PER_SEC;
+	double total = (double)(end5 - start) / CLOCKS_PER_SEC;
 	std::cout.setf(std::ios::fixed,std::ios::floatfield);
 	std::cout.precision(5);
 	std::cout << "Time(load):" << dif1 << std::endl;
@@ -329,6 +330,7 @@ int mainStaticMatch()
  	std::cout << "Time(match):" << dif3 << std::endl;
  	std::cout << "Time(plot):" << dif4 << std::endl;
  	std::cout << "Time(save):" << dif5 << std::endl;
+  	std::cout << "Time(Total):" << total << std::endl;
   return 0;
 }
 
