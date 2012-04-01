@@ -324,7 +324,7 @@ int mainStaticMatch()
     cvResetImageROI(img); 
     cvSetImageROI( img, cvRect(img1->width,0, img2->width, img1->height) ); 
     cvCopy(img2, img); 
-	cvSaveImage("result_cpu.jpg",img);
+	cvSaveImage("result_gpu.jpg",img);
 	
 	end5 = clock();
 	double dif1 = (double)(end1 - start) / CLOCKS_PER_SEC;
