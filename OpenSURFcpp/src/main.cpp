@@ -274,7 +274,7 @@ int mainStaticMatch()
 	cvSaveImage("result1_cpu.jpg",img1);
 	cvSaveImage("result2_cpu.jpg",img2);
 
-	IplImage *img - cvCreateImage(cvSize(img1->width + img2->width,
+	IplImage *img = cvCreateImage(cvSize(img1->width + img2->width,
 										 img1->height),IPL_DEPTH_8U, 1 ); 
 	cvZero( img );	
 	cvSetImageROI( img, cvRect( 0, 0, img1->width, img1->height ) ); 
