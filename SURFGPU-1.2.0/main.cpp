@@ -279,7 +279,12 @@ int mainStaticMatch()
   IplImage *img1, *img2;
   img1 = cvLoadImage("../data/1.JPG");
   img2 = cvLoadImage("../data/2.JPG");
-	
+  
+  std::cout << "im1" << std::endl;
+  std::cout << "Size:" << ipts1.size() << std::endl;
+
+  std::cout << "im2" << std::endl;
+  std::cout << "Size:" << ipts2.size() << std::endl;
   end1 = clock();
 
   IpVec ipts1, ipts2;
