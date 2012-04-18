@@ -50,7 +50,7 @@ CUDA_ADD_EXECUTABLE(surf
 	fasthessian.cpp
 	integral.cpp
 	ipoint.cpp
-	main.cpp
+#	main.cpp
 	main_kinect.cpp
 	surf.cpp
 	utils.cpp
