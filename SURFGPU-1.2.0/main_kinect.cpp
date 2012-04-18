@@ -110,7 +110,7 @@ int mainStaticMatch()
 	cvCopy(img2, img); 
 	cvResetImageROI(img); 
 	sprintf(ofilename,"../data/output/out_kinect_rgb_%d.jpg",n);
-	cvSaveImage("ofilename,img);
+	cvSaveImage(ofilename,img);
 
 	end5 = clock();
 	double dif1 = (double)(end1 - start) / CLOCKS_PER_SEC;
