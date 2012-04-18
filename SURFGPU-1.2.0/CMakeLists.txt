@@ -51,6 +51,7 @@ CUDA_ADD_EXECUTABLE(surf
 	integral.cpp
 	ipoint.cpp
 	main.cpp
+	main_kinect.cpp
 	surf.cpp
 	utils.cpp
 	cuda/buildSURFDescriptorsGPU.cu
