@@ -50,83 +50,85 @@ int mainStaticMatch()
 	time_t start,end1,end2,end3,end4,end5;
 	
 	for (int n = 0;n < 165;n+=2) {
-	start = clock();
-	char filename1[40],filename2[40],ofilename[40];
-	sprintf(filename1,"../data/kinect_rgb_%d.jpg",n);
-	sprintf(filename2,"../data/kinect_rgb_%d.jpg",n + 1);
+		start = clock();
+		char filename1[40],filename2[40],ofilename[40];
+		sprintf(filename1,"../data/kinect_rgb_%3d.jpg",n);
+		sprintf(filename2,"../data/kinect_rgb_%3d.jpg",n + 1);
 
-	IplImage *img1, *img2;
-	img1 = cvLoadImage(filename1);
-	img2 = cvLoadImage(filename2);
+		IplImage *img1, *img2;
+		img1 = cvLoadImage(filename1);
+		img2 = cvLoadImage(filename2);
 
+		end1 = clock();
 
-	end1 = clock();
+		IpVec ipts1, ipts2;
+		surfDetDes(img1,ipts1,false,4,4,2,0.0008f);
+		surfDetDes(img2,ipts2,false,4,4,2,0.0008f);
 
-	IpVec ipts1, ipts2;
-	surfDetDes(img1,ipts1,false,4,4,2,0.0008f);
-	surfDetDes(img2,ipts2,false,4,4,2,0.0008f);
+	//	std::cout << "im1" << std::endl;
+	//	std::cout << "Size:" << ipts1.size() << std::endl;
+	//	std::cout << "im2" << std::endl;
+	//	std::cout << "Size:" << ipts2.size() << std::endl;
 
-//	std::cout << "im1" << std::endl;
-//	std::cout << "Size:" << ipts1.size() << std::endl;
-
-//	std::cout << "im2" << std::endl;
-//	std::cout << "Size:" << ipts2.size() << std::endl;
 	end2 = clock();
 
-	IpPairVec matches;
-	getMatches(ipts1,ipts2,matches);
+		IpPairVec matches;
+		getMatches(ipts1,ipts2,matches);
 
-	end3 = clock();
+		end3 = clock();
 
-	for (unsigned int i = 0; i < matches.size(); ++i)
-	{
-		drawPoint(img1,matches[i].first);
-		drawPoint(img2,matches[i].second);
+		for (unsigned int i = 0; i < matches.size(); ++i)
+		{
+			drawPoint(img1,matches[i].first);
+			drawPoint(img2,matches[i].second);
 
-		const int & w = img1->width;
-		cvLine(img1,cvPoint(matches[i].first.x,matches[i].first.y),cvPoint(matches[i].second.x+w,matches[i].second.y), cvScalar(255,255,255),1);
-		cvLine(img2,cvPoint(matches[i].first.x-w,matches[i].first.y),cvPoint(matches[i].second.x,matches[i].second.y), cvScalar(255,255,255),1);
-	}
+			const int & w = img1->width;
+			cvLine(img1,cvPoint(matches[i].first.x,matches[i].first.y),cvPoint(matches[i].second.x+w,matches[i].second.y), cvScalar(255,255,255),1);
+			cvLine(img2,cvPoint(matches[i].first.x-w,matches[i].first.y),cvPoint(matches[i].second.x,matches[i].second.y), cvScalar(255,255,255),1);
+		}
 
-	std::cout << "Matches: " << matches.size() << std::endl;
-	/*
-	cvNamedWindow("1", CV_WINDOW_AUTOSIZE );
-	cvNamedWindow("2", CV_WINDOW_AUTOSIZE );
-	cvShowImage("1", img1);
-	cvShowImage("2", img2);
-	cvWaitKey(0);
-	*/
-	end4 = clock();
+		std::cout << "Matches: " << matches.size() << std::endl;
+		/*
+		cvNamedWindow("1", CV_WINDOW_AUTOSIZE );
+		cvNamedWindow("2", CV_WINDOW_AUTOSIZE );
+		cvShowImage("1", img1);
+		cvShowImage("2", img2);
+		cvWaitKey(0);
+		*/
 
-	//  cvSaveImage("result_gpu1.jpg",img1);
-	//	cvSaveImage("result_gpu2.jpg",img2);
 
-	// Stitch two images
-	IplImage *img = cvCreateImage(cvSize(img1->width + img2->width,
-										 img1->height),img1->depth,img1->nChannels); 
-	cvSetImageROI( img, cvRect( 0, 0, img1->width, img1->height ) ); 
-	cvCopy(img1, img);
-	cvSetImageROI( img, cvRect(img1->width,0, img2->width, img2->height) ); 
-	cvCopy(img2, img); 
-	cvResetImageROI(img); 
-	sprintf(ofilename,"../data/output/out_kinect_rgb_%d.jpg",n);
-	cvSaveImage(ofilename,img);
 
-	end5 = clock();
-	double dif1 = (double)(end1 - start) / CLOCKS_PER_SEC;
-	double dif2 = (double)(end2 - end1) / CLOCKS_PER_SEC;
-	double dif3 = (double)(end3 - end2) / CLOCKS_PER_SEC;
-	double dif4 = (double)(end4 - end3) / CLOCKS_PER_SEC;
-	double dif5 = (double)(end5 - end4) / CLOCKS_PER_SEC;
-	double total = (double)(end5 - start) / CLOCKS_PER_SEC;
-	std::cout.setf(std::ios::fixed,std::ios::floatfield);
-//	std::cout.precision(5);
-//	std::cout << "Time(load):" << dif1 << std::endl;
-//	std::cout << "Time(descriptor):" << dif2 << std::endl;
-//	std::cout << "Time(match):" << dif3 << std::endl;
-//	std::cout << "Time(plot):" << dif4 << std::endl;
-//	std::cout << "Time(save):" << dif5 << std::endl;
-	std::cout << "Time(Total):" << total << std::endl;
+		end4 = clock();
+
+		//  cvSaveImage("result_gpu1.jpg",img1);
+		//	cvSaveImage("result_gpu2.jpg",img2);
+
+		// Stitch two images
+		IplImage *img = cvCreateImage(cvSize(img1->width + img2->width,
+											 img1->height),img1->depth,img1->nChannels); 
+		cvSetImageROI( img, cvRect( 0, 0, img1->width, img1->height ) ); 
+		cvCopy(img1, img);
+		cvSetImageROI( img, cvRect(img1->width,0, img2->width, img2->height) ); 
+		cvCopy(img2, img); 
+		cvResetImageROI(img); 
+		sprintf(ofilename,"../data/output/out_kinect_rgb_%3d.jpg",n);
+		cvSaveImage(ofilename,img);
+
+		end5 = clock();
+	//	double dif1 = (double)(end1 - start) / CLOCKS_PER_SEC;
+	//	double dif2 = (double)(end2 - end1) / CLOCKS_PER_SEC;
+	//	double dif3 = (double)(end3 - end2) / CLOCKS_PER_SEC;
+	//	double dif4 = (double)(end4 - end3) / CLOCKS_PER_SEC;
+	//	double dif5 = (double)(end5 - end4) / CLOCKS_PER_SEC;
+		double total = (double)(end5 - start) / CLOCKS_PER_SEC;
+		std::cout.setf(std::ios::fixed,std::ios::floatfield);
+	//	std::cout.precision(5);
+	//	std::cout << "Time(load):" << dif1 << std::endl;
+	//	std::cout << "Time(descriptor):" << dif2 << std::endl;
+	//	std::cout << "Time(match):" << dif3 << std::endl;
+	//	std::cout << "Time(plot):" << dif4 << std::endl;
+	//	std::cout << "Time(save):" << dif5 << std::endl;
+		std::cout << "Time(Total):" << total << std::endl;
 	}
 	return 0;
 }
