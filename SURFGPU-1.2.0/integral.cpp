@@ -139,14 +139,14 @@ end8 = clock();
 	double dif8 = (double)(end8 - end7) / CLOCKS_PER_SEC;
 	std::cout.setf(std::ios::fixed,std::ios::floatfield);
 	std::cout.precision(10);
-	std::cout << "\t\tTime(1):" << dif1 << std::endl;
-	std::cout << "\t\tTime(2):" << dif2 << std::endl;
- 	std::cout << "\t\tTime(3):" << dif3 << std::endl;
- 	std::cout << "\t\tTime(4):" << dif4 << std::endl;
- 	std::cout << "\t\tTime(5):" << dif5 << std::endl;
-	std::cout << "\t\tTime(6):" << dif6 << std::endl;
- 	std::cout << "\t\tTime(7):" << dif7 << std::endl;
- 	std::cout << "\t\tTime(8):" << dif8 << std::endl;
+//	std::cout << "\t\tTime(1):" << dif1 << std::endl;
+//	std::cout << "\t\tTime(2):" << dif2 << std::endl;
+ //	std::cout << "\t\tTime(3):" << dif3 << std::endl;
+ //	std::cout << "\t\tTime(4):" << dif4 << std::endl;
+ //	std::cout << "\t\tTime(5):" << dif5 << std::endl;
+//	std::cout << "\t\tTime(6):" << dif6 << std::endl;
+ //	std::cout << "\t\tTime(7):" << dif7 << std::endl;
+ //	std::cout << "\t\tTime(8):" << dif8 << std::endl;
 	return img;
 }
 

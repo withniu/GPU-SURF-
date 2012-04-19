@@ -66,11 +66,11 @@ int mainStaticMatch()
 	surfDetDes(img1,ipts1,false,4,4,2,0.0008f);
 	surfDetDes(img2,ipts2,false,4,4,2,0.0008f);
 
-	std::cout << "im1" << std::endl;
-	std::cout << "Size:" << ipts1.size() << std::endl;
+//	std::cout << "im1" << std::endl;
+//	std::cout << "Size:" << ipts1.size() << std::endl;
 
-	std::cout << "im2" << std::endl;
-	std::cout << "Size:" << ipts2.size() << std::endl;
+//	std::cout << "im2" << std::endl;
+//	std::cout << "Size:" << ipts2.size() << std::endl;
 	end2 = clock();
 
 	IpPairVec matches;
