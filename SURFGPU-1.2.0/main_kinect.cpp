@@ -49,7 +49,7 @@ int mainStaticMatch()
 {
 	time_t start,end1,end2,end3,end4,end5;
 	
-	for (int n = 0;n < 165;n++) {
+	for (int n = 0;n < 165;n+=2) {
 	start = clock();
 	char filename1[40],filename2[40],ofilename[40];
 	sprintf(filename1,"../data/kinect_rgb_%d.jpg",n);
@@ -120,12 +120,12 @@ int mainStaticMatch()
 	double dif5 = (double)(end5 - end4) / CLOCKS_PER_SEC;
 	double total = (double)(end5 - start) / CLOCKS_PER_SEC;
 	std::cout.setf(std::ios::fixed,std::ios::floatfield);
-	std::cout.precision(5);
-	std::cout << "Time(load):" << dif1 << std::endl;
-	std::cout << "Time(descriptor):" << dif2 << std::endl;
-	std::cout << "Time(match):" << dif3 << std::endl;
-	std::cout << "Time(plot):" << dif4 << std::endl;
-	std::cout << "Time(save):" << dif5 << std::endl;
+//	std::cout.precision(5);
+//	std::cout << "Time(load):" << dif1 << std::endl;
+//	std::cout << "Time(descriptor):" << dif2 << std::endl;
+//	std::cout << "Time(match):" << dif3 << std::endl;
+//	std::cout << "Time(plot):" << dif4 << std::endl;
+//	std::cout << "Time(save):" << dif5 << std::endl;
 	std::cout << "Time(Total):" << total << std::endl;
 	}
 	return 0;
